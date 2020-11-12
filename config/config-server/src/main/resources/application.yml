@@ -1,0 +1,22 @@
+spring:
+  application:
+    name: config-server
+  cloud:
+    config:
+      server:
+        git:
+          uri: https://github.com/gpqhl0071/config.git
+          force-pull: true
+          default-label: main
+#          强制拉取职权文件
+#          search-paths: abc, def*
+#          username:
+#          password:
+
+server:
+  port: 60000
+
+#  使用
+# http://localhost:60000/config-consumer-dev.properties
+# http://localhost:60000/config-consumer-dev.yml
+# http://localhost:60000/config-consumer/dev

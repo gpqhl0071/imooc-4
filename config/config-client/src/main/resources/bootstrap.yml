@@ -1,0 +1,35 @@
+spring:
+  application:
+    name: config-client
+  cloud:
+    config:
+      #      uri: http://localhost:60000
+      #     接入eureka#########
+      discovery:
+        enabled: true
+        service-id: config-server-eureka
+      #     接入eureka#########
+      profile: prod
+      label: main
+      name: config-consumer
+
+server:
+  port: 61000
+
+myWords: ${words}
+management:
+  security:
+    enabled: false
+  endpoints:
+    web:
+      exposure:
+        include: "*"
+  endpoint:
+    health:
+      show-details: always
+
+# 基于eureka 服务注册相关的配置
+eureka:
+  client:
+    serviceUrl:
+      defaultZone: http://localhost:20000/eureka

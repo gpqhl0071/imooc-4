@@ -1,0 +1,6 @@
+encrypt:
+  key: 12345678
+
+# 加密： http://localhost:60001/encrypt
+# 解密： http://localhost:60001/decrypt
+# 加密样例：food: '{cipher}9fc52366a50c2f54966124f13e47518be3038ea67c9ff92bfbc27faa1362585b'

@@ -1,0 +1,44 @@
+spring:
+  application:
+    name: config-bus-client
+  cloud:
+    config:
+      #      uri: http://localhost:60000
+      #     接入eureka#########
+      discovery:
+        enabled: true
+        service-id: config-bus-server
+      #     接入eureka#########
+      profile: prod
+      label: main
+      name: config-consumer
+    # 引入多个消息队中间件时，指定bus 默认消息中间件
+    stream:
+      default-binder: rabbit
+  rabbitmq:
+    host: localhost
+    port: 5672
+    username: guest
+    password: guest
+
+server:
+  port: 61002
+
+myWords: ${words}
+management:
+  security:
+    enabled: false
+  endpoints:
+    web:
+      exposure:
+        include: "*"
+  endpoint:
+    health:
+      show-details: always
+
+# 基于eureka 服务注册相关的配置
+eureka:
+  client:
+    serviceUrl:
+      defaultZone: http://localhost:20000/eureka
+

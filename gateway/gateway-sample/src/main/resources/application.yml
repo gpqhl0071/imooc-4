@@ -1,0 +1,28 @@
+management:
+  security:
+    enabled: false
+  endpoints:
+    web:
+      exposure:
+        include: "*"
+  endpoint:
+    health:
+      show-details: always
+
+# 基于eureka 服务注册相关的配置
+eureka:
+  client:
+    serviceUrl:
+      defaultZone: http://localhost:20000/eureka
+
+spring:
+  application:
+    name: gateway-service
+  cloud:
+    gateway:
+      discovery:
+        locator:
+          enabled: true
+
+server:
+  port: 65000
