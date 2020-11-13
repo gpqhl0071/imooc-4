@@ -1,3 +1,22 @@
+spring:
+  application:
+    name: gateway-service
+  cloud:
+    gateway:
+      discovery:
+        locator:
+          enabled: true
+      routes:
+        - id: feignclient
+          uri: lb://FEIGN-CLIENT
+          predicates:
+            - Path=/yml/**
+          filters:
+            - StripPrefix=1
+
+server:
+  port: 65000
+
 management:
   security:
     enabled: false
@@ -14,15 +33,3 @@ eureka:
   client:
     serviceUrl:
       defaultZone: http://localhost:20000/eureka
-
-spring:
-  application:
-    name: gateway-service
-  cloud:
-    gateway:
-      discovery:
-        locator:
-          enabled: true
-
-server:
-  port: 65000
