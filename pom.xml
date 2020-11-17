@@ -27,6 +27,11 @@
         <module>gateway/gateway-sample</module>
         <module>gateway/auth-service-api</module>
         <module>gateway/auth-service</module>
+        <module>sleuth/sleuth-traceA</module>
+        <module>sleuth-traceB</module>
+        <module>sleuth/sleuth-traceB</module>
+        <module>sleuth/zipkin-servier</module>
+        <module>stream/stream-sample</module>
     </modules>
     <packaging>pom</packaging>
 

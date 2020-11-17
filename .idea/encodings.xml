@@ -39,7 +39,15 @@
     <file url="file://$PROJECT_DIR$/hystrix/hystrix-turbine/src/main/resources" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/ribbon/ribbon-consumer/src/main/java" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/ribbon/ribbon-consumer/src/main/resources" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/sleuth/sleuth-traceA/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/sleuth/sleuth-traceA/src/main/resources" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/sleuth/sleuth-traceB/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/sleuth/sleuth-traceB/src/main/resources" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/sleuth/zipkin-servier/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/sleuth/zipkin-servier/src/main/resources" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/src/main/java" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/src/main/resources" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/stream/stream-sample/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/stream/stream-sample/src/main/resources" charset="UTF-8" />
   </component>
 </project>
