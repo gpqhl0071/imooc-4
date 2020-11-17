@@ -1,5 +1,6 @@
 package com.imooc.biz;
 
+import com.imooc.topic.ErrorTopic;
 import com.imooc.topic.GroupTopic;
 import com.imooc.topic.MyTopic;
 
@@ -19,6 +20,8 @@ public class Controller {
   private MyTopic producer;
   @Autowired
   private GroupTopic groupTopicProducer;
+  @Autowired
+  private ErrorTopic errorTopic;
 
   @PostMapping("send")
   public void sendMessage(@RequestParam(value = "body") String body) {
@@ -28,6 +31,13 @@ public class Controller {
   @PostMapping("sendToGroup")
   public void sendToGroup(@RequestParam(value = "body") String body) {
     groupTopicProducer.output().send(MessageBuilder.withPayload(body).build());
+  }
+
+  @PostMapping("sendError")
+  public void sendErrorMessage(@RequestParam(value = "body") String body) {
+    MessageBean msg = new MessageBean();
+    msg.setPayload(body);
+    errorTopic.output().send(MessageBuilder.withPayload(msg).build());
   }
 
 }
