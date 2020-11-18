@@ -2,6 +2,7 @@ package com.imooc.biz;
 
 import com.imooc.topic.DlqTopic;
 import com.imooc.topic.ErrorTopic;
+import com.imooc.topic.FallbackTopic;
 import com.imooc.topic.GroupTopic;
 import com.imooc.topic.MyTopic;
 
@@ -25,6 +26,8 @@ public class Controller {
   private ErrorTopic errorTopic;
   @Autowired
   private DlqTopic dlqTopic;
+  @Autowired
+  private FallbackTopic fallbackTopic;
 
   @PostMapping("send")
   public void sendMessage(@RequestParam(value = "body") String body) {
@@ -43,11 +46,24 @@ public class Controller {
     errorTopic.output().send(MessageBuilder.withPayload(msg).build());
   }
 
+
   @PostMapping("dlq")
   public void sendDlqMessage(@RequestParam(value = "body") String body) {
     MessageBean msg = new MessageBean();
     msg.setPayload(body);
     dlqTopic.output().send(MessageBuilder.withPayload(msg).build());
+  }
+
+  @PostMapping("fallback")
+  public void fallbackMessage(@RequestParam(value = "body") String body, @RequestParam(value = "version", defaultValue = "1.0") String version) {
+    MessageBean msg = new MessageBean();
+    msg.setPayload(body);
+    fallbackTopic.output().send(
+        MessageBuilder
+            .withPayload(msg)
+            .setHeader("version", version)
+            .build()
+    );
   }
 
 }
