@@ -6,11 +6,11 @@
         <sourceOutputDir name="target/generated-sources/annotations" />
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
-        <module name="zipkin-servier" />
+        <module name="feign-consumer-advance" />
         <module name="stream-sample" />
         <module name="config-server" />
         <module name="config-client" />
-        <module name="consumer" />
+        <module name="hystrix-dashboard" />
         <module name="ribbon-consumer" />
         <module name="sleuth-traceB" />
         <module name="sleuth-traceA" />
@@ -20,15 +20,15 @@
         <module name="feign-consumer" />
         <module name="config-bus-client" />
         <module name="config-server-eureka" />
+        <module name="gateway-sample" />
         <module name="hystrix-fallback" />
-        <module name="config-bus-server" />
         <module name="eureka" />
-        <module name="feign-consumer-advance" />
-        <module name="hystrix-dashboard" />
+        <module name="zipkin-servier" />
+        <module name="consumer" />
         <module name="feign-client-intf" />
         <module name="auth-service-api" />
         <module name="hystrix-turbine" />
-        <module name="gateway-sample" />
+        <module name="config-bus-server" />
       </profile>
     </annotationProcessing>
   </component>

@@ -1,5 +1,6 @@
 package com.imooc.biz;
 
+import com.imooc.topic.DlqTopic;
 import com.imooc.topic.ErrorTopic;
 import com.imooc.topic.GroupTopic;
 import com.imooc.topic.MyTopic;
@@ -18,7 +19,8 @@ import java.util.concurrent.atomic.AtomicInteger;
         Sink.class,
         MyTopic.class,
         GroupTopic.class,
-        ErrorTopic.class
+        ErrorTopic.class,
+        DlqTopic.class
     }
 )
 public class StreamConsumer {
@@ -49,6 +51,18 @@ public class StreamConsumer {
       count.set(0);
     } else {
       log.info("what's your problem");
+      throw new RuntimeException("i'am not ok");
+    }
+    log.info("error message consumed successfully , payload={}", payload);
+  }
+
+  @StreamListener(DlqTopic.INPUT)
+  public void consumeDlqMessage(Object payload) {
+    log.info("dlq - are you ok?");
+    if (count.incrementAndGet() % 3 == 0) {
+      log.info("dlq - fine, thank you. and you ");
+    } else {
+      log.info("dlq - what's your problem");
       throw new RuntimeException("i'am not ok");
     }
     log.info("error message consumed successfully , payload={}", payload);

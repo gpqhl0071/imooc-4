@@ -1,5 +1,6 @@
 package com.imooc.biz;
 
+import com.imooc.topic.DlqTopic;
 import com.imooc.topic.ErrorTopic;
 import com.imooc.topic.GroupTopic;
 import com.imooc.topic.MyTopic;
@@ -22,6 +23,8 @@ public class Controller {
   private GroupTopic groupTopicProducer;
   @Autowired
   private ErrorTopic errorTopic;
+  @Autowired
+  private DlqTopic dlqTopic;
 
   @PostMapping("send")
   public void sendMessage(@RequestParam(value = "body") String body) {
@@ -38,6 +41,13 @@ public class Controller {
     MessageBean msg = new MessageBean();
     msg.setPayload(body);
     errorTopic.output().send(MessageBuilder.withPayload(msg).build());
+  }
+
+  @PostMapping("dlq")
+  public void sendDlqMessage(@RequestParam(value = "body") String body) {
+    MessageBean msg = new MessageBean();
+    msg.setPayload(body);
+    dlqTopic.output().send(MessageBuilder.withPayload(msg).build());
   }
 
 }
